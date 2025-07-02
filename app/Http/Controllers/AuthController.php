@@ -88,5 +88,57 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    /**
+     * Mostrar el formulario de registro
+     */
+    public function showRegistrationForm()
+    {
+        // Si ya está autenticado, redirigir al dashboard
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
+        return view('auth.register');
+    }
+
+    /**
+     * Procesar el registro de un nuevo usuario
+     */
+    public function register(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'email.required' => 'El email es obligatorio.',
+            'email.email' => 'El email debe ser una dirección de correo válida.',
+            'email.unique' => 'Este email ya está registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'La confirmación de contraseña no coincide.',
+        ]);
+
+        // Crear el nuevo usuario
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Autenticar al usuario recién registrado
+        Auth::login($user);
+
+        // Regenerar la sesión
+        $request->session()->regenerate();
+
+        // Mensaje de éxito
+        Session::flash('success', '¡Registro exitoso! Bienvenido/a.');
+
+        // Redirigir al dashboard
+        return redirect()->route('dashboard');
+    }
 }
 

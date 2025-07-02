@@ -15,163 +15,132 @@
     
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif; /* Mantengo la fuente por legibilidad */
+            background-color: #f8f9fa; /* Un gris muy claro como fondo general */
+            color: #212529; /* Color de texto oscuro estándar */
             min-height: 100vh;
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff !important; /* Navbar blanca */
+            border-bottom: 1px solid #dee2e6; /* Borde sutil */
+            box-shadow: none; /* Sin sombra */
         }
         
         .main-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* Contenido principal blanco */
+            border: 1px solid #dee2e6; /* Borde sutil */
+            border-radius: 0.25rem; /* Bordes redondeados estándar de Bootstrap */
+            box-shadow: none; /* Sin sombra */
             margin: 20px 0;
-            padding: 30px;
+            padding: 20px; /* Padding reducido un poco */
         }
-        
+
+        /* Estilos básicos para botones de Bootstrap, no se necesitan gradientes ni sombras */
+        .btn {
+            border-radius: 0.25rem; /* Bordes redondeados estándar */
+            padding: 0.375rem 0.75rem; /* Padding estándar de Bootstrap */
+            font-weight: 400;
+            /* transition: none; Quitamos transiciones */
+        }
+
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 10px;
-            padding: 12px 24px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            /* Los colores de Bootstrap por defecto para .btn-primary son adecuados */
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            /* Comportamiento hover por defecto de Bootstrap */
         }
         
         .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            border: none;
-            border-radius: 10px;
-            padding: 12px 24px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.4);
+            /* Colores por defecto de Bootstrap */
         }
         
         .btn-warning {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border: none;
-            border-radius: 10px;
-            padding: 8px 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-warning:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+            color: #000; /* Asegurar contraste en warning si se usa el amarillo de Bootstrap */
         }
         
         .btn-danger {
-            background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
-            border: none;
-            border-radius: 10px;
-            padding: 8px 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-danger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(252, 70, 107, 0.4);
+            /* Colores por defecto de Bootstrap */
         }
         
         .table {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 0; /* Sin bordes redondeados especiales */
+            box-shadow: none; /* Sin sombra */
+            border: 1px solid #dee2e6; /* Borde estándar para la tabla */
         }
         
         .table thead th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            font-weight: 600;
-            padding: 15px;
-        }
-        
-        .table tbody tr {
-            transition: all 0.3s ease;
+            background-color: #e9ecef; /* Un gris claro para cabecera de tabla */
+            color: #212529; /* Texto oscuro */
+            border-bottom: 2px solid #dee2e6; /* Borde inferior más marcado */
+            font-weight: 500; /* Un poco menos de peso */
+            padding: 0.75rem; /* Padding estándar */
         }
         
         .table tbody tr:hover {
-            background-color: rgba(102, 126, 234, 0.1);
-            transform: scale(1.01);
+            background-color: #f1f3f5; /* Un hover muy sutil */
+            /* transform: none; Quitamos transformaciones */
         }
         
         .form-control {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
+            border-radius: 0.25rem; /* Bordes estándar */
+            border: 1px solid #ced4da; /* Borde estándar de Bootstrap */
+            padding: 0.375rem 0.75rem; /* Padding estándar */
+            /* transition: none; */
         }
         
         .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: #80bdff; /* Color de foco estándar de Bootstrap */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra de foco estándar */
         }
         
         .alert {
-            border-radius: 15px;
-            border: none;
-            padding: 15px 20px;
-            margin-bottom: 20px;
+            border-radius: 0.25rem; /* Bordes estándar */
+            border-width: 1px;
+            border-style: solid;
+            padding: 0.75rem 1.25rem; /* Padding estándar */
+            margin-bottom: 1rem; /* Margen estándar */
         }
         
-        .alert-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
-        
-        .alert-danger {
-            background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
-            color: white;
-        }
-        
+        /* Bootstrap ya define bien .alert-success, .alert-danger, etc. con colores sólidos */
+        /* No es necesario sobreescribirlos si queremos un diseño básico */
+
         .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            border: 1px solid #dee2e6; /* Borde estándar */
+            border-radius: 0.25rem; /* Bordes estándar */
+            box-shadow: none; /* Sin sombra */
+            /* transition: none; */
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            /* transform: none; */
+            box-shadow: none;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
         }
         
         .pagination .page-link {
-            border-radius: 10px;
+            border-radius: 0.25rem; /* Bordes estándar */
             margin: 0 2px;
-            border: none;
-            color: #667eea;
-            transition: all 0.3s ease;
+            border: 1px solid #dee2e6; /* Borde estándar */
+            color: #007bff; /* Color de enlace estándar de Bootstrap */
+            /* transition: none; */
         }
         
         .pagination .page-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-2px);
+            background-color: #e9ecef; /* Hover estándar */
+            color: #0056b3;
+            /* transform: none; */
         }
         
         .pagination .page-item.active .page-link {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
+            background-color: #007bff; /* Color activo estándar */
+            border-color: #007bff; /* Borde activo estándar */
+            color: white;
         }
     </style>
     

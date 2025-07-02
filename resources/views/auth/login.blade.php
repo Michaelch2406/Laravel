@@ -15,221 +15,150 @@
     
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif; /* Mantengo la fuente por legibilidad */
+            background-color: #f8f9fa; /* Un gris muy claro como fondo general */
+            color: #212529; /* Color de texto oscuro estándar */
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem; /* Espacio por si el contenido es muy grande en pantallas pequeñas */
         }
         
         .login-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            padding: 40px;
+            background-color: #ffffff; /* Contenedor blanco */
+            border: 1px solid #dee2e6; /* Borde sutil */
+            border-radius: 0.25rem; /* Bordes redondeados estándar */
+            box-shadow: none; /* Sin sombra */
+            padding: 2rem; /* Padding aumentado ligeramente para más espacio */
             width: 100%;
             max-width: 450px;
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            /* animation: none; quitamos animación */
         }
         
         .login-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 1.5rem; /* Reducido el margen inferior */
         }
         
         .login-header h1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            /* background: none; quitamos gradiente */
+            /* -webkit-background-clip: unset; */
+            /* -webkit-text-fill-color: unset; */
+            /* background-clip: unset; */
+            color: #212529; /* Color de texto estándar */
+            font-weight: 600; /* Un poco menos de peso */
+            font-size: 1.75rem; /* Tamaño reducido */
+            margin-bottom: 0.5rem; /* Margen reducido */
         }
         
         .login-header p {
-            color: #6c757d;
-            font-size: 1.1rem;
+            color: #6c757d; /* Color de Bootstrap para texto silenciado */
+            font-size: 1rem; /* Tamaño estándar */
         }
         
         .form-floating {
-            margin-bottom: 20px;
+            margin-bottom: 1rem; /* Margen estándar de Bootstrap */
         }
         
-        .form-control {
-            border-radius: 15px;
-            border: 2px solid #e9ecef;
-            padding: 15px 20px;
+        .form-control { /* Heredado de app.blade.php si es que login extiende de app, o definido aquí si es standalone */
+            border-radius: 0.25rem;
+            border: 1px solid #ced4da;
+            padding: 0.375rem 0.75rem;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
+            /* transition: none; */
+            background-color: #fff; /* Fondo blanco explícito */
         }
         
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-            background: white;
+        .form-control:focus { /* Heredado o definido */
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            background-color: #fff;
         }
         
         .form-floating label {
             color: #6c757d;
-            font-weight: 500;
+            font-weight: 400; /* Peso normal */
         }
         
-        .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 15px;
-            padding: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
+        .btn-login { /* Usará estilos de .btn .btn-primary de Bootstrap por defecto */
+            /* background: none; */
+            /* border: none; */
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem; /* Padding ajustado */
+            font-weight: 500;
+            font-size: 1rem;
             width: 100%;
-            color: white;
-            transition: all 0.3s ease;
-            margin-top: 10px;
+            /* color: white; Ya lo define .btn-primary */
+            /* transition: none; */
+            margin-top: 0.5rem; /* Margen reducido */
         }
         
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-        
-        .btn-login:active {
-            transform: translateY(0);
+            /* transform: none; */
+            /* box-shadow: none; */
+            /* color: white; */
         }
         
         .remember-me {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 1rem; /* Margen estándar */
         }
         
-        .form-check-input {
-            border-radius: 6px;
-            border: 2px solid #e9ecef;
-            margin-right: 10px;
+        .form-check-input { /* Estilos de Bootstrap por defecto son adecuados */
+            border-radius: 0.25em; /* Bootstrap default */
+            border: 1px solid #adb5bd; /* Bootstrap default */
+            margin-right: 0.5em; /* Espacio a la derecha */
         }
         
         .form-check-input:checked {
-            background-color: #667eea;
-            border-color: #667eea;
+            /* background-color: #0d6efd; Bootstrap default */
+            /* border-color: #0d6efd; Bootstrap default */
         }
         
-        .alert {
-            border-radius: 15px;
-            border: none;
-            padding: 15px 20px;
-            margin-bottom: 20px;
+        .alert { /* Heredado o definido */
+            border-radius: 0.25rem;
+            border-width: 1px;
+            border-style: solid;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
         }
         
-        .alert-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
-        
-        .alert-danger {
-            background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
-            color: white;
-        }
+        /* .alert-success, .alert-danger heredan de app.blade.php o usan defaults de Bootstrap */
         
         .login-footer {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 1.5rem; /* Margen reducido */
+            padding-top: 1rem; /* Padding reducido */
             border-top: 1px solid #e9ecef;
         }
         
         .demo-credentials {
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
+            background-color: #e9ecef; /* Fondo gris claro */
+            border-radius: 0.25rem;
+            padding: 1rem; /* Padding reducido */
+            margin-bottom: 1rem; /* Margen estándar */
+            border-left: 3px solid #0d6efd; /* Borde izquierdo azul Bootstrap */
         }
         
         .demo-credentials h6 {
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 10px;
+            color: #0d6efd; /* Azul Bootstrap */
+            font-weight: 500; /* Un poco menos de peso */
+            margin-bottom: 0.5rem;
         }
         
         .demo-credentials p {
-            margin: 5px 0;
+            margin: 0.25rem 0; /* Margen reducido */
             font-size: 0.9rem;
             color: #495057;
         }
         
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-        
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
+        /* Se eliminan .floating-shapes y @keyframes float */
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+    <!-- Se elimina div.floating-shapes -->
     
     <div class="login-container">
         <div class="login-header">
@@ -286,6 +215,10 @@
                 <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
             </button>
         </form>
+
+        <div class="text-center mt-3">
+            <p>¿No tienes una cuenta? <a href="{{ route('register') }}">Regístrate aquí</a></p>
+        </div>
         
         <div class="login-footer">
             <p class="text-muted">
